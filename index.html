@@ -556,6 +556,41 @@
             color: var(--turquesa);
         }
         
+        /* Form Section */
+        .form-section {
+            padding: 6rem 2rem;
+            background: var(--negro);
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--turquesa), transparent);
+            opacity: 0.3;
+        }
+
+        .form-wrapper {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            background: var(--gris-oscuro);
+            border-radius: 25px;
+            border: 1px solid rgba(50, 230, 224, 0.2);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(50, 230, 224, 0.1);
+        }
+
+        .form-wrapper iframe {
+            display: block;
+            width: 100%;
+            border: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -784,6 +819,19 @@
         </div>
     </section>
 
+    <!-- Form Section -->
+    <section class="form-section" id="formulario">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">¿Lista para dar el paso?</h2>
+            <p class="section-subtitle">
+                Cuéntame un poco sobre tu negocio y te doy la mejor opción para ti
+            </p>
+            <a href="https://forms.gle/huaTsPLWJxHoHpzB6" target="_blank" class="btn-primary">
+                📋 Rellena el formulario de inscripción
+            </a>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="faq">
         <div class="container">
@@ -871,6 +919,7 @@
                 Únete a empresas que ya automatizan sus procesos con Gemini Enterprise
             </p>
             <a href="#pricing" class="btn-primary">Ver Opciones de Curso</a>
+            <a href="#formulario" class="btn-primary" style="margin-left:1rem; background: linear-gradient(135deg, var(--turquesa), #00b4b0);">Hacer una Pregunta</a>
         </div>
     </section>
 
@@ -880,7 +929,7 @@
             <p>&copy; 2026 Zona CEO AI · Todo en Orden</p>
             <div class="footer-links">
                 <a href="https://www.linkedin.com/in/iratxe-vitas-martinez-61b1a1251/" target="_blank">LinkedIn</a>
-                <a href="mailto:iratxevm.tuav@gmail.com">Email</a>
+                <a href="/cdn-cgi/l/email-protection#b0d9c2d1c4c8d5c6dd9ec4c5d1c6f0d7ddd1d9dc9ed3dfdd">Email</a>
                 <a href="#">Política de Privacidad</a>
             </div>
         </div>
@@ -891,40 +940,34 @@
         function toggleFaq(element) {
             const item = element.parentElement;
             const wasActive = item.classList.contains('active');
-            
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
+
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('active');
             });
-            
-            // Open clicked if it wasn't active
+
             if (!wasActive) {
                 item.classList.add('active');
             }
         }
-        
+
         // Contact function
         function contactar(tier) {
-            // Redirect to WhatsApp
-            const whatsapp = '34657715400'; // WhatsApp configurado
-            
-            const message = encodeURIComponent(`Hola Iratxe, estoy interesado en el curso Todo en Orden - ${tier}`);
-            window.open(`https://wa.me/${whatsapp}?text=${message}`, '_blank');
+            const whatsapp = '34657715400';
+            const message = encodeURIComponent('Hola Iratxe, estoy interesado en el curso Todo en Orden - ' + tier);
+            window.open('https://wa.me/' + whatsapp + '?text=' + message, '_blank');
         }
-        
+
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-    </script>
+    
+</script>
 </body>
 </html>
